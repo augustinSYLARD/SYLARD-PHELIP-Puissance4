@@ -63,9 +63,12 @@ public class Partie {
                 System.out.println(" 1 2 3 4 5 6 7");//on affiche les numéros des colonnes
                 grille.afficherGrilleSurConsole();//on affiche la grille
                 System.out.println("Au tour de "+joueurCourant.Nom);//un indique quel joueur doit jouer
-                System.out.println("Dans quel colonne souhaiter vous mettre un jeton?");//on demande au joueur dans quel colonne il souhaite jouer
-                System.out.println("Entrer le numéro de la colonne souhaiter.");//on lui demande de saisir le bon numéro
-                int numColonne = saisieUtilisateur.nextInt();//on attribut a la variable numcolonne, le numéro que vient de rentrer le joueur
+                int numColonne=0;
+                while (numColonne<1||numColonne>7) {
+                    System.out.println("Dans quel colonne souhaiter vous mettre un jeton?");//on demande au joueur dans quel colonne il souhaite jouer
+                    System.out.println("Entrer le numéro de la colonne souhaiter.(entre 1 et 7)");//on lui demande de saisir le numéro souhaité
+                    numColonne = saisieUtilisateur.nextInt();//on attribut a la variable numcolonne, le numéro que vient de rentrer le joueur
+                }
                 if (grille.colonneRemplie(numColonne-1)==false) {//Si la colonne n'est pas remplie alors
                     grille.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1], numColonne-1);//on ajoute un jeton dans la colonne souhaiter
                     joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1]=null;//on retire un jeton au joueur
