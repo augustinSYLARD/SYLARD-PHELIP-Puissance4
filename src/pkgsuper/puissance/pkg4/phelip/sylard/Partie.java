@@ -5,7 +5,8 @@
  */
 package pkgsuper.puissance.pkg4.phelip.sylard;
 
-import java.util.Scanner;//on importe la bibliotheque de Scanne
+import java.util.Random;//on importe la bibliotheque de Scanne
+import java.util.Scanner;
 
 /**
  *
@@ -24,8 +25,16 @@ public class Partie {
     }
     
     public void attribuerCouleursAuxJoueurs() {//cette fonction permet d'attribuer les couleur aux joueurs
-        ListeJoueurs[0].affecterCouleur("rouge");//le premier joueur sera rouge
-        ListeJoueurs[1].affecterCouleur("jaune");//le deuxieme sera jaune
+        Random r = new Random();
+        int variablealéatoire = r.nextInt(2);//on crée une variablealéatoire qui va contenir  un nombre entre 0 et 1
+        if (variablealéatoire==0) {//si la variable est 0
+            ListeJoueurs[0].affecterCouleur("rouge");//le premier joueur sera rouge
+            ListeJoueurs[1].affecterCouleur("jaune");//le deuxieme sera jaune
+        }
+        else {//sinon inverse les couleurs
+            ListeJoueurs[0].affecterCouleur("jaune");//le premier joueur sera jaune
+            ListeJoueurs[1].affecterCouleur("rouge");//le deuxieme sera rouge
+        }
     }//on utilise pour cela les fonction affecterCouleur() qui modifie l'attribut Couleur des joueurs
     
     public void initialiserPartie() {//cette fonction va permettre de réaliser les préparatif avant une partie
