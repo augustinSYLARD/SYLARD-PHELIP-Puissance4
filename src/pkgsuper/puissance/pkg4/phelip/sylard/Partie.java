@@ -52,12 +52,24 @@ public class Partie {
     public void debuterPartie() {
         Scanner saisieUtilisateur = new Scanner(System.in);//on crée la variable saisieUtilisateur qui va saisir les valeur des Joueurs
         String nom;//on crée la variable nom qui va contenir les nom des joueur pendant un cour instant
-        System.out.println("Saisissez le nom du joueur 1: ");//on demande au joueurs 1 de donner son nom
-        nom = saisieUtilisateur.next();//on saisie le nom du joueur dans la variable nom
-        ListeJoueurs[0] = new Joueur(nom);//on initialise l'objet joueur 1 avec son nom
-        System.out.println("Saisissez le nom du joueur 2: ");//on demande au joueurs 2 de donner son nom
-        nom = saisieUtilisateur.next();//on saisie le nom du joueur dans la variable nom
-        ListeJoueurs[1] = new Joueur(nom);//on initialise l'objet joueur 2 avec son nom
+        Random r = new Random();
+        int variablealéatoire = r.nextInt(2);//on crée une variablealéatoire qui va contenir  un nombre entre 0 et 1
+        if (variablealéatoire==0) {
+            System.out.println("Saisissez le nom du joueur 1: ");//on demande au joueurs 1 de donner son nom
+            nom = saisieUtilisateur.next();//on saisie le nom du joueur dans la variable nom
+            ListeJoueurs[0] = new Joueur(nom);//on initialise l'objet joueur avec son nom
+            System.out.println("Saisissez le nom du joueur 2: ");//on demande au joueurs 2 de donner son nom
+            nom = saisieUtilisateur.next();//on saisie le nom du joueur dans la variable nom
+            ListeJoueurs[1] = new Joueur(nom);//on initialise l'objet joueur avec son nom
+        }
+        else {
+            System.out.println("Saisissez le nom du premier joueur: ");//on demande au joueurs 1 de donner son nom
+            nom = saisieUtilisateur.next();//on saisie le nom du joueur dans la variable nom
+            ListeJoueurs[1] = new Joueur(nom);//on initialise l'objet joueur avec son nom
+            System.out.println("Saisissez le nom du deuxieme joueur: ");//on demande au joueurs 2 de donner son nom
+            nom = saisieUtilisateur.next();//on saisie le nom du joueur dans la variable nom
+            ListeJoueurs[0] = new Joueur(nom);//on initialise l'objet joueur avec son nom
+        }
         
         attribuerCouleursAuxJoueurs();//on appelle ensuite la fonction attribuerCouleursAuxJoueurs() pour donner la couleur au joueur qui vienne d'être crée
         initialiserPartie();//on prépare enfin la partie avec les parametre de initiale d'une partie de puissance 4 grâce a la fonction initialiserPartie()
