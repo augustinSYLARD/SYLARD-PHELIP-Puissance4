@@ -125,11 +125,14 @@ public class Partie {
                             System.out.println("Entrer la ligne du jeton que vous souhaiter récuperer");
                             numLigne=saisieUtilisateur.nextInt();
                         }
-                        if (grille.Cellules[numLigne-1][numColonne-1].lireCouleurDuJeton()==joueurCourant.Couleur) {
-                            grille.recupererJeton(numLigne-1, numColonne-1);
-                        }
-                        else {
-                            System.out.println("Ce jeton n'est pas a vous !!!");
+                        if (grille.Cellules[numLigne-1][numColonne-1].jetonCourant!=null) {
+                            if (grille.Cellules[numLigne-1][numColonne-1].lireCouleurDuJeton()==joueurCourant.Couleur) {
+                                grille.recupererJeton(numLigne-1, numColonne-1);
+                                grille.tasserGrille(numColonne-1);
+                            }
+                            else {
+                                System.out.println("Ce jeton n'est pas a vous !!!");
+                            }
                         }
                     }
                 }

@@ -25,8 +25,15 @@ public class Grille {
     public boolean ajouterJetonDansColonne(Jeton jeton, int numcolonne) {//permet d'ajouter le jeton mis en parametre dans la colonne mise en parametre
         for (int i=0; i<6;i++) {
             if (Cellules[i][numcolonne].jetonCourant==null) {//Pour chaque cellules de la colonne, verifie si elle est vide
-                Cellules[i][numcolonne].affecterJeton(jeton);//si elle l'est, alors il place le jeton a l'interieur
-                return true;//et renvoit true pour terminer la fonction et confirmer que sa a fonctionner
+                if (Cellules[i][numcolonne].presenceTroueNoir()==false) {
+                    Cellules[i][numcolonne].affecterJeton(jeton);//si elle l'est, alors il place le jeton a l'interieur
+                    return true;//et renvoit true pour terminer la fonction et confirmer que sa a fonctionner
+                }
+                else {
+                    Cellules[i][numcolonne].affecterJeton(jeton);
+                    Cellules[i][numcolonne].activerTrouNoir();
+                    return true;
+                }
             }//sinon passe a la cellule au dessus
         }//si aucune des 6 cellules de la colonnes n'est vide, alors elle est plein et la fonction renvoit false
         return false;//renvoit false et met fin a la fonction
@@ -167,7 +174,7 @@ public class Grille {
     }
     
     public void tasserGrille(int numcolonne) {
-        for (int i=0; i<6; i++) {
+        for (int i=0; i<5; i++) {
             if (Cellules[i][numcolonne].jetonCourant==null) {
                 if (Cellules[i+1][numcolonne].jetonCourant!=null) {
                     Cellules[i][numcolonne].jetonCourant=Cellules[i+1][numcolonne].jetonCourant;
