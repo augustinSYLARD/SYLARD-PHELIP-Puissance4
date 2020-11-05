@@ -14,6 +14,7 @@ public class Joueur {
     String Nom;//on crée la variable Nom contenant le nom du joueur
     String Couleur;//on crée la variable Couleur contenant la couleur du joueur
     Jeton ListeJetons[];//on crée la liste des jeton que possede le joueur
+    int nombreDesintegrateurs;
     int nombreJetonsRestants;//on crée aussi la variable contenant le nombre de jeton restant au  joueur
     
     public Joueur(String nom) {//le constructeur de la classe d'objet Joueur
@@ -22,6 +23,7 @@ public class Joueur {
         for (int i=0; i<21; i++) {//pour chaque emplacement dans liste de jeton on y place un jeton de couleur du joueur
             ListeJetons[i]= new Jeton(Couleur);
         }
+        nombreDesintegrateurs=0;
         nombreJetonsRestants=0;//on definit le nombre de jetons sur 0 car au debut aucun participant na de jeton pour éviter tout problem
     }
     
@@ -32,5 +34,19 @@ public class Joueur {
     public void ajouterJeton (Jeton jeton) {//cette fonction permet de rajouter le jeton donner en parametre a la listre de jeton et augmente le nombre de jeton du joueur a 1
         ListeJetons[nombreJetonsRestants]=jeton;
         nombreJetonsRestants++;
+    }
+    
+    public void obtenirDesintegrateur() {
+        nombreDesintegrateurs++;
+    }
+    
+    public boolean utiliserDesintegrateur() {
+        if (nombreDesintegrateurs==0) {
+            nombreDesintegrateurs--;
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
