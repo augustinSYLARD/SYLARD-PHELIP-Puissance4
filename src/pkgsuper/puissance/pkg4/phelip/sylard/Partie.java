@@ -135,16 +135,18 @@ public class Partie {
                         numColonne = saisieUtilisateur.nextInt();//on attribut a la variable numcolonne, le numéro que vient de rentrer le joueur
                     }
                     if (grille.colonneRemplie(numColonne-1)==false) {//Si la colonne n'est pas remplie alors
-                        for (int i=0; i<6; i++) {
-                            if (grille.Cellules[i][numColonne-1].presenceDesintegrateur()==true) {
-                                grille.Cellules[i][numColonne-1].recupererDesintegrateur();
-                                joueurCourant.obtenirDesintegrateur();
-                                break;
-                            }
-                        }
                         grille.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1], numColonne-1);//on ajoute un jeton dans la colonne souhaiter
                         joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1]=null;//on retire un jeton au joueur
                         joueurCourant.nombreJetonsRestants--;
+                        for (int i=0; i<6; i++) {
+                            if (grille.Cellules[i][numColonne-1].jetonCourant!=null) {
+                                if (grille.Cellules[i][numColonne-1].presenceDesintegrateur()==true) {
+                                    grille.Cellules[i][numColonne-1].recupererDesintegrateur();
+                                    joueurCourant.obtenirDesintegrateur();
+                                    break;
+                                }
+                            }
+                        }
                         test="ok";//le test est alors ok, et la boucle s'arrette
                     }
                     else {//sinon on demander de saisir une autre colonne
@@ -178,7 +180,7 @@ public class Partie {
                     }
                     else {
                         if (choix==3) {
-                            if (joueurCourant.nombreDesintegrateurs<0) {
+                            if (joueurCourant.nombreDesintegrateurs>0) {
                                 while (numColonne<1||numColonne>7) {
                                     System.out.println("Entrer la colonne du jeton que vous souhaiter désintégrer");
                                     numColonne=saisieUtilisateur.nextInt();
@@ -187,8 +189,9 @@ public class Partie {
                                     System.out.println("Entrer la ligne du jeton que vous souhaiter désintégrer");
                                     numLigne=saisieUtilisateur.nextInt();
                                 }
-                                if (grille.Cellules[numLigne][numColonne].jetonCourant.Couleur==ListeJoueurs[(numtour+1)%2].Couleur) {
-                                    grille.Cellules[numLigne][numColonne].supprimerJeton();
+                                if (grille.Cellules[numLigne-1][numColonne-1].jetonCourant.Couleur==ListeJoueurs[(numtour+1)%2].Couleur) {
+                                    grille.Cellules[numLigne-1][numColonne-1].supprimerJeton();
+                                    grille.tasserGrille(numColonne-1);
                                     test="ok";
                                 }
                                 else {
