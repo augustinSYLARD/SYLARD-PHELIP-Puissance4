@@ -50,9 +50,15 @@ public class Partie {
         
         Random r = new Random();//on crée une classe Random()
         for (int i=0; i<5; i++) {//on place 5 trou noir
-            int numligne = r.nextInt(6);//on choisie aléatoirement
-            int numcolonne = r.nextInt(7);
-            grille.placerTrouNoir(numligne, numcolonne);
+            String test="";
+            while (test!="ok") {
+                int numligne = r.nextInt(6);//on choisie aléatoirement
+                int numcolonne = r.nextInt(7);
+                if (grille.Cellules[numligne][numcolonne].placerTrouNoir()==false) {
+                    grille.placerTrouNoir(numligne, numcolonne);
+                    test="ok";
+                }
+            }
         }
     }
     
