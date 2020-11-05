@@ -92,19 +92,26 @@ public class Partie {
                 grille.afficherGrilleSurConsole();//on affiche la grille
                 System.out.println("Au tour de "+joueurCourant.Nom);//un indique quel joueur doit jouer
                 int numColonne=0;
-                while (numColonne<1||numColonne>7) {
-                    System.out.println("Dans quel colonne souhaiter vous mettre un jeton?");//on demande au joueur dans quel colonne il souhaite jouer
-                    System.out.println("Entrer le numéro de la colonne souhaiter.(entre 1 et 7)");//on lui demande de saisir le numéro souhaité
-                    numColonne = saisieUtilisateur.nextInt();//on attribut a la variable numcolonne, le numéro que vient de rentrer le joueur
-                }
-                if (grille.colonneRemplie(numColonne-1)==false) {//Si la colonne n'est pas remplie alors
-                    grille.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1], numColonne-1);//on ajoute un jeton dans la colonne souhaiter
-                    joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1]=null;//on retire un jeton au joueur
-                    joueurCourant.nombreJetonsRestants--;
-                    test="ok";//le test est alors ok, et la boucle s'arrette
-                }
-                else {//sinon on demander de saisir une autre colonne
-                    System.out.println("la colonne est pleine, veuillez saisir une autre colonne.");
+                int choix=0;
+                System.out.println("Que souhaiter vous faire ?");
+                System.out.println("1) Placer un jeton");
+                System.out.println("2) Récupérer un jeton");
+                choix = saisieUtilisateur.nextInt();
+                if (choix==1) {
+                    while (numColonne<1||numColonne>7) {
+                        System.out.println("Dans quel colonne souhaiter vous mettre un jeton?");//on demande au joueur dans quel colonne il souhaite jouer
+                        System.out.println("Entrer le numéro de la colonne souhaiter.(entre 1 et 7)");//on lui demande de saisir le numéro souhaité
+                        numColonne = saisieUtilisateur.nextInt();//on attribut a la variable numcolonne, le numéro que vient de rentrer le joueur
+                    }
+                    if (grille.colonneRemplie(numColonne-1)==false) {//Si la colonne n'est pas remplie alors
+                        grille.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1], numColonne-1);//on ajoute un jeton dans la colonne souhaiter
+                        joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1]=null;//on retire un jeton au joueur
+                        joueurCourant.nombreJetonsRestants--;
+                        test="ok";//le test est alors ok, et la boucle s'arrette
+                    }
+                    else {//sinon on demander de saisir une autre colonne
+                        System.out.println("la colonne est pleine, veuillez saisir une autre colonne.");
+                    }
                 }
             }
             numtour++;//on augmente le nombre de tour qui c'est produit de 1
