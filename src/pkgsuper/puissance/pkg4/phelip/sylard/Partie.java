@@ -126,6 +126,7 @@ public class Partie {
                 System.out.println("Que souhaiter vous faire ?");
                 System.out.println("1) Placer un jeton");
                 System.out.println("2) Récupérer un jeton");
+                System.out.println("3) Utiliser un désintégrateur");
                 choix = saisieUtilisateur.nextInt();
                 if (choix==1) {
                     while (numColonne<1||numColonne>7) {
@@ -168,6 +169,10 @@ public class Partie {
                             System.out.println("Il n'y a pas de jeton dans cette cellule");
                         }
                     }
+                    else {
+                        if (choix==3) {
+                            
+                        }
                 }
             }
             numtour++;//on augmente le nombre de tour qui c'est produit de 1
