@@ -122,8 +122,8 @@ public class Partie {
             System.out.println("Bravo à toi!");
         }
         else {
-            if (grille.etreGagnantePourJoueur(ListeJoueurs[0])==true) {//si le joueur 2 a gagné
-                System.out.println(ListeJoueurs[0].Nom+" a Gagné !!!");//on affiche un message de felicitation avec son nom
+            if (grille.etreGagnantePourJoueur(ListeJoueurs[1])==true) {//si le joueur 2 a gagné
+                System.out.println(ListeJoueurs[1].Nom+" a Gagné !!!");//on affiche un message de felicitation avec son nom
                 System.out.println("Bravo à toi!");
             }
             else {//sinon c'est qu'il y a match nul
