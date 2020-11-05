@@ -49,13 +49,36 @@ public class Partie {
         ListeJoueurs[1].nombreJetonsRestants=21;
         
         Random r = new Random();//on crée une classe Random()
+        int désintégrateur1=0;
+        int désintégrateur2=0;
+        while(désintégrateur1==désintégrateur2) {
+            désintégrateur1=r.nextInt(5);
+            désintégrateur2=r.nextInt(5);
+        }
         for (int i=0; i<5; i++) {//on place 5 trou noir
             String test="";
             while (test!="ok") {
                 int numligne = r.nextInt(6);//on choisie aléatoirement
                 int numcolonne = r.nextInt(7);
-                if (grille.Cellules[numligne][numcolonne].placerTrouNoir()==false) {
+                if (grille.Cellules[numligne][numcolonne].presenceTroueNoir()==false) {
                     grille.placerTrouNoir(numligne, numcolonne);
+                    if (désintégrateur1==i) {
+                        grille.placerDesintegrateur(numligne, numcolonne);
+                    }
+                    if (désintégrateur2==i) {
+                        grille.placerDesintegrateur(numligne, numcolonne);
+                    }
+                    test="ok";
+                }
+            }
+        }
+        for (int i=0; i<3;i++) {
+            String test="";
+            while (test!="ok") {
+                int numligne = r.nextInt(6);//on choisie aléatoirement
+                int numcolonne = r.nextInt(7);
+                if (grille.Cellules[numligne][numcolonne].presenceDesintegrateur()==false) {
+                    grille.placerDesintegrateur(numligne, numcolonne);
                     test="ok";
                 }
             }
