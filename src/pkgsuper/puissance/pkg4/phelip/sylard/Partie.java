@@ -135,18 +135,18 @@ public class Partie {
                         numColonne = saisieUtilisateur.nextInt();//on attribut a la variable numcolonne, le numéro que vient de rentrer le joueur
                     }
                     if (grille.colonneRemplie(numColonne-1)==false) {//Si la colonne n'est pas remplie alors
+                        for (int i=0; i<6; i++) {//pour chaque case de la colonne
+                            if (grille.Cellules[i][numColonne-1].jetonCourant==null) {//S'il n'y a pas de jeton
+                                if (grille.Cellules[i][numColonne-1].presenceDesintegrateur()==true) {//s'il y a un désintégrateur
+                                    grille.Cellules[i][numColonne-1].recupererDesintegrateur();//recupere le désintégrateur
+                                    joueurCourant.obtenirDesintegrateur();//Donne au joueur un désintégrateur
+                                }
+                                break;//S'il a détecter une case vide c'est que c'est celle ou va attérir le jeton, il n'y a donc pas besoin de continue la boucle
+                            }
+                        }
                         grille.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1], numColonne-1);//on ajoute un jeton dans la colonne souhaiter
                         joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1]=null;//on retire un jeton au joueur
                         joueurCourant.nombreJetonsRestants--;
-                        for (int i=0; i<6; i++) {
-                            if (grille.Cellules[i][numColonne-1].jetonCourant!=null) {
-                                if (grille.Cellules[i][numColonne-1].presenceDesintegrateur()==true) {
-                                    grille.Cellules[i][numColonne-1].recupererDesintegrateur();
-                                    joueurCourant.obtenirDesintegrateur();
-                                    break;
-                                }
-                            }
-                        }
                         test="ok";//le test est alors ok, et la boucle s'arrette
                     }
                     else {//sinon on demander de saisir une autre colonne
@@ -223,8 +223,14 @@ public class Partie {
         grille.afficherGrilleSurConsole();//on affiche une derniere fois la grille
         
         if (grille.etreGagnantePourJoueur(ListeJoueurs[0])==true) {//si le joueur 1 a gagné
-            System.out.println(ListeJoueurs[0].Nom+" a Gagné !!!!");//on affiche un message de felicitation avec son nom
-            System.out.println("Bravo à toi!");
+            if (grille.etreGagnantePourJoueur(ListeJoueurs[1])==true) {//Si les deux joueur sont gagant alors c'est donc le dernier joueur a avoir jouer qui perd, mais comme on a augmenter le numéro du tour de 1 ce n'est pas l'autre joueur qui est gagnant mais joueurCourant
+                System.out.println(joueurCourant.Nom+" a Gagné !!!!");//on affiche un message de felicitation avec son nom
+                System.out.println("Bravo à toi!");
+            }
+            else {//Si seul le joueur 1 a gagné
+                System.out.println(ListeJoueurs[0].Nom+" a Gagné !!!!");//on affiche un message de felicitation avec son nom
+                System.out.println("Bravo à toi!");
+            }
         }
         else {
             if (grille.etreGagnantePourJoueur(ListeJoueurs[1])==true) {//si le joueur 2 a gagné
