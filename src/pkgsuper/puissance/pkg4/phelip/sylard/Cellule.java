@@ -12,9 +12,11 @@ package pkgsuper.puissance.pkg4.phelip.sylard;
 public class Cellule {
     
     Jeton jetonCourant;//jetonCourant contiant le jeton qui se trouve dans la cellule
+    boolean trouNoir;
     
     public Cellule() {//constructeur de la class Cellule
         jetonCourant=null;//on initialise jeton courant pour dire qu'il n'y a pas de jeton dans la cellule de base
+        trouNoir=false;
     }
     
     public boolean affecterJeton(Jeton jeton) {//permet, si il n'y pas de jeton dans la cellule, d'y placer le jeton mit en parametre
@@ -43,8 +45,31 @@ public class Cellule {
         }
     }
     
+    public boolean placerTrouNoir() {
+        if (trouNoir=true) {
+            return false;
+        }
+        trouNoir=true;
+        return true;
+    }
+    
+    public boolean presenceTroueNoir() {
+        if (trouNoir==true) {
+            return true;
+        }
+        return false;
+    }
+    
     public String lireCouleurDuJeton() {//renvoit l'attribue couleur du jeton
         return jetonCourant.Couleur;
     }
     
+    public boolean activerTrouNoir() {
+        if (trouNoir==true) {
+            jetonCourant=null;
+            trouNoir=false;
+            return true;
+        }
+        return false;
+    }
 }

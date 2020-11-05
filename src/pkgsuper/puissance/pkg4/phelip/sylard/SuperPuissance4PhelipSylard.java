@@ -16,7 +16,6 @@ public class SuperPuissance4PhelipSylard {
      */
     public static void main(String[] args) {
         Partie partie = new Partie(); //on crée une partie
-        
         partie.debuterPartie(); //on debute la partie avec la methode debuterPartie()
     }
 }

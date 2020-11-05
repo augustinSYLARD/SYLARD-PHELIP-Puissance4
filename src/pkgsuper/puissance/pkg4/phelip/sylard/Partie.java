@@ -47,6 +47,13 @@ public class Partie {
         }
         ListeJoueurs[0].nombreJetonsRestants=21;//on initialise enfin le nombres de jetons restants aux joueur car on vien de donner 21 jeton aux joueurs
         ListeJoueurs[1].nombreJetonsRestants=21;
+        
+        Random r = new Random();//on crée une classe Random()
+        for (int i=0; i<5; i++) {//on place 5 trou noir
+            int numligne = r.nextInt(6);//on choisie aléatoirement
+            int numcolonne = r.nextInt(7);
+            grille.placerTrouNoir(numligne, numcolonne);
+        }
     }
     
     public void debuterPartie() {

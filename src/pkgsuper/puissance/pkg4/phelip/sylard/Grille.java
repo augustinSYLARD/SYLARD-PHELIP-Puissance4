@@ -56,8 +56,14 @@ public class Grille {
             System.out.print("|");//affiche en debut de ligne un trait du "tableau"
             for (int j=0; j<7;j++) {//pour chaque élément de la ligne,
                 if (Cellules[i][j].jetonCourant==null) {//si la cellule est vide
-                    System.out.print(" ");//affiche un espace
-                    System.out.print("|");//affiche un autre trait du "tableau"
+                    if (Cellules[i][j].presenceTroueNoir()==false) {//s'il n'y a pas de trou noir
+                        System.out.print(" ");//affiche un espace
+                        System.out.print("|");//affiche un autre trait du "tableau"
+                    }
+                    else {//s'il y a un trou noir
+                        System.out.print("*");//affiche une étoile s'il y a un trou noir
+                        System.out.print("|");//affiche un autre trait du "tableau"
+                    }
                 }
                 else {//sinon, (elle n'est pas vide)
                     if (Cellules[i][j].jetonCourant.Couleur=="rouge") {//si elle est rouge
@@ -167,5 +173,13 @@ public class Grille {
             }
         }//si aucun n'est vide, alors la colonne est remplie
         return true;//renvoi true
+    }
+    
+    public boolean placerTrouNoir(int numligne, int numcolonne) {
+        if (Cellules[numligne][numcolonne].trouNoir==false) {
+            Cellules[numligne][numcolonne].trouNoir=true;
+            return true;
+        }
+        return false;
     }
 }
