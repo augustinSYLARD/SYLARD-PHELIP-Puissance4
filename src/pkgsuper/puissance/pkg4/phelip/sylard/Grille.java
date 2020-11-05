@@ -166,6 +166,17 @@ public class Grille {
         return false;
     }
     
+    public void tasserGrille(int numcolonne) {
+        for (int i=0; i<6; i++) {
+            if (Cellules[i][numcolonne].jetonCourant==null) {
+                if (Cellules[i+1][numcolonne].jetonCourant!=null) {
+                    Cellules[i][numcolonne].jetonCourant=Cellules[i+1][numcolonne].jetonCourant;
+                    Cellules[i+1][numcolonne].jetonCourant=null;
+                }
+            }
+        }
+    }
+    
     public boolean colonneRemplie(int numcolonne) {//verifie si la colonne est renplit
         for(int i=0;i<6;i++) {//pour chaque ligne
             if (Cellules[i][numcolonne].jetonCourant==null) {//si la cellule est vide,
@@ -181,5 +192,22 @@ public class Grille {
             return true;
         }
         return false;
+    }
+    
+    public boolean supprimerJeton(int numligne,int numcolonne) {
+        if (Cellules[numligne][numcolonne].jetonCourant!=null) {
+            Cellules[numligne][numcolonne].supprimerJeton();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    public Jeton recupererJeton(int numligne,int numcolonne) {
+        Jeton jeton;
+        jeton=Cellules[numligne][numcolonne].jetonCourant;
+        Cellules[numligne][numcolonne].supprimerJeton();
+        return jeton;
     }
 }
