@@ -205,9 +205,6 @@ public class Grille {
     }
     
     public Jeton recupererJeton(int numligne,int numcolonne) {
-        Jeton jeton;
-        jeton=Cellules[numligne][numcolonne].jetonCourant;
-        Cellules[numligne][numcolonne].supprimerJeton();
-        return jeton;
+        return Cellules[numligne][numcolonne].recupererJeton();
     }
 }

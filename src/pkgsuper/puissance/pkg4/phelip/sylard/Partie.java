@@ -91,6 +91,7 @@ public class Partie {
                 System.out.println(" 1 2 3 4 5 6 7");//on affiche les numéros des colonnes
                 grille.afficherGrilleSurConsole();//on affiche la grille
                 System.out.println("Au tour de "+joueurCourant.Nom);//un indique quel joueur doit jouer
+                int numLigne=0;
                 int numColonne=0;
                 int choix=0;
                 System.out.println("Que souhaiter vous faire ?");
@@ -116,8 +117,15 @@ public class Partie {
                 else {
                     if (choix==2) {
                         System.out.println("Quel jeton souhaiter vous récuperer ?");
-                        System.out.println("Entrer les coordoné comme ceci:");
-                        System.out.println("lc l pour le numéro de la ligne et c pour le numéro de la colonne");
+                        while (numColonne<1||numColonne>7) {
+                            System.out.println("Entrer la colonne du jeton que vous souhaiter récuperer");
+                            numColonne=saisieUtilisateur.nextInt()-1;
+                        }
+                        while (numColonne<1||numColonne>6) {
+                            System.out.println("Entrer la ligne du jeton que vous souhaiter récuperer");
+                            numLigne=saisieUtilisateur.nextInt()-1;
+                        }
+                        grille.recupererJeton(numLigne, numColonne);
                     }
                 }
             }
