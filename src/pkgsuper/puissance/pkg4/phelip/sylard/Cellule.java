@@ -13,10 +13,12 @@ public class Cellule {
     
     Jeton jetonCourant;//jetonCourant contiant le jeton qui se trouve dans la cellule
     boolean trouNoir;
+    boolean desintegrateur;
     
     public Cellule() {//constructeur de la class Cellule
         jetonCourant=null;//on initialise jeton courant pour dire qu'il n'y a pas de jeton dans la cellule de base
         trouNoir=false;
+        desintegrateur=false;
     }
     
     public boolean affecterJeton(Jeton jeton) {//permet, si il n'y pas de jeton dans la cellule, d'y placer le jeton mit en parametre
@@ -53,6 +55,14 @@ public class Cellule {
         return true;
     }
     
+    public boolean placerDesintegrateur() {
+        if (desintegrateur==false) {
+            desintegrateur=true;
+            return true;
+        }
+        return false;
+    }
+    
     public boolean presenceTroueNoir() {
         if (trouNoir==true) {
             return true;
@@ -60,8 +70,23 @@ public class Cellule {
         return false;
     }
     
+    public boolean presenceDesintegrateur(){
+        if (desintegrateur==true) {
+            return true;
+        }
+        return false;
+    }
+    
     public String lireCouleurDuJeton() {//renvoit l'attribue couleur du jeton
         return jetonCourant.Couleur;
+    }
+    
+    public boolean recupererDesintegrateur() {
+        if (desintegrateur==true) {
+            desintegrateur=false;
+            return true;
+        }
+        return false;
     }
     
     public boolean activerTrouNoir() {

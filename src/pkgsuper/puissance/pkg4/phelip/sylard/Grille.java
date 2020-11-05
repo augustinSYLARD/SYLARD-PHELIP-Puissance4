@@ -201,6 +201,14 @@ public class Grille {
         return false;
     }
     
+    public boolean placerDesintegrateur(int numligne, int numcolonne) {
+        if (Cellules[numligne][numcolonne].desintegrateur==false) {
+            Cellules[numligne][numcolonne].desintegrateur=true;
+            return true;
+        }
+        return false;
+    }
+    
     public boolean supprimerJeton(int numligne,int numcolonne) {
         if (Cellules[numligne][numcolonne].jetonCourant!=null) {
             Cellules[numligne][numcolonne].supprimerJeton();
