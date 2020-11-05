@@ -127,12 +127,16 @@ public class Partie {
                         }
                         if (grille.Cellules[numLigne-1][numColonne-1].jetonCourant!=null) {
                             if (grille.Cellules[numLigne-1][numColonne-1].lireCouleurDuJeton()==joueurCourant.Couleur) {
-                                grille.recupererJeton(numLigne-1, numColonne-1);
+                                joueurCourant.ajouterJeton(grille.recupererJeton(numLigne-1, numColonne-1));
                                 grille.tasserGrille(numColonne-1);
+                                test="ok";
                             }
                             else {
                                 System.out.println("Ce jeton n'est pas a vous !!!");
                             }
+                        }
+                        else {
+                            System.out.println("Il n'y a pas de jeton dans cette cellule");
                         }
                     }
                 }
