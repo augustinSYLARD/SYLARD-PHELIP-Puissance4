@@ -178,7 +178,19 @@ public class Partie {
                     }
                     else {
                         if (choix==3) {
-                            
+                            if (joueurCourant.nombreDesintegrateurs<0) {
+                                while (numColonne<1||numColonne>7) {
+                                    System.out.println("Entrer la colonne du jeton que vous souhaiter récuperer");
+                                    numColonne=saisieUtilisateur.nextInt();
+                                }
+                                while (numLigne<1||numLigne>6) {
+                                    System.out.println("Entrer la ligne du jeton que vous souhaiter récuperer");
+                                    numLigne=saisieUtilisateur.nextInt();
+                                }
+                            }
+                            else {
+                                System.out.println("Vous n'avez pas de désintégrateur");
+                            }
                         }
                     }
                 }
