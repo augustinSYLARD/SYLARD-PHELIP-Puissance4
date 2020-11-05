@@ -62,14 +62,16 @@ public class Grille {
         for (int i=5; i>=0;i--) {//pour chaque ligne de haut en bas de la grille,
             System.out.print("|");//affiche en debut de ligne un trait du "tableau"
             for (int j=0; j<7;j++) {//pour chaque élément de la ligne,
-                if (Cellules[i][j].jetonCourant==null) {//si la cellule est vide
-                    if (Cellules[i][j].presenceTroueNoir()==false) {//s'il n'y a pas de trou noir
-                        System.out.print(" ");//affiche un espace
-                        System.out.print("|");//affiche un autre trait du "tableau"
-                    }
-                    else {//s'il y a un trou noir
+                if (Cellules[i][j].jetonCourant==null) {//si il n'ya pas de jeton
+                    if (Cellules[i][j].presenceTroueNoir()==true) {//s'il y a un trou noir
                         System.out.print("*");//affiche une étoile s'il y a un trou noir
                         System.out.print("|");//affiche un autre trait du "tableau"
+                    }
+                    else {//s'il n'y a pas de trou noir
+                        if (Cellules[i][j].presenceDesintegrateur()==true) {//s'il y a un désintégrateur
+                            System.out.print("/");//affiche un espace
+                            System.out.print("|");//affiche un autre trait du "tableau"
+                        }
                     }
                 }
                 else {//sinon, (elle n'est pas vide)
