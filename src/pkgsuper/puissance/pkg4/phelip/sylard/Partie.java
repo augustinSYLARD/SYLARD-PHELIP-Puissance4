@@ -119,13 +119,18 @@ public class Partie {
                         System.out.println("Quel jeton souhaiter vous récuperer ?");
                         while (numColonne<1||numColonne>7) {
                             System.out.println("Entrer la colonne du jeton que vous souhaiter récuperer");
-                            numColonne=saisieUtilisateur.nextInt()-1;
+                            numColonne=saisieUtilisateur.nextInt();
                         }
-                        while (numColonne<1||numColonne>6) {
+                        while (numLigne<1||numLigne>6) {
                             System.out.println("Entrer la ligne du jeton que vous souhaiter récuperer");
-                            numLigne=saisieUtilisateur.nextInt()-1;
+                            numLigne=saisieUtilisateur.nextInt();
                         }
-                        grille.recupererJeton(numLigne, numColonne);
+                        if (grille.Cellules[numLigne-1][numColonne-1].lireCouleurDuJeton()==joueurCourant.Couleur) {
+                            grille.recupererJeton(numLigne-1, numColonne-1);
+                        }
+                        else {
+                            System.out.println("Ce jeton n'est pas a vous !!!");
+                        }
                     }
                 }
             }
