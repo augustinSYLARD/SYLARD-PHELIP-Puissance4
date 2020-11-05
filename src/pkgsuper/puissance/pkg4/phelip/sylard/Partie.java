@@ -113,6 +113,13 @@ public class Partie {
                         System.out.println("la colonne est pleine, veuillez saisir une autre colonne.");
                     }
                 }
+                else {
+                    if (choix==2) {
+                        System.out.println("Quel jeton souhaiter vous récuperer ?");
+                        System.out.println("Entrer les coordoné comme ceci:");
+                        System.out.println("lc l pour le numéro de la ligne et c pour le numéro de la colonne");
+                    }
+                }
             }
             numtour++;//on augmente le nombre de tour qui c'est produit de 1
             if (grille.etreGagnantePourJoueur(ListeJoueurs[0])==true)//si le joueur 1 a gagné on donne à finDeLaPartie la valeur true
