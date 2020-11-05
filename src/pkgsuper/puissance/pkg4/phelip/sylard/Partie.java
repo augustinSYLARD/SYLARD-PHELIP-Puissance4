@@ -180,12 +180,19 @@ public class Partie {
                         if (choix==3) {
                             if (joueurCourant.nombreDesintegrateurs<0) {
                                 while (numColonne<1||numColonne>7) {
-                                    System.out.println("Entrer la colonne du jeton que vous souhaiter récuperer");
+                                    System.out.println("Entrer la colonne du jeton que vous souhaiter désintégrer");
                                     numColonne=saisieUtilisateur.nextInt();
                                 }
                                 while (numLigne<1||numLigne>6) {
-                                    System.out.println("Entrer la ligne du jeton que vous souhaiter récuperer");
+                                    System.out.println("Entrer la ligne du jeton que vous souhaiter désintégrer");
                                     numLigne=saisieUtilisateur.nextInt();
+                                }
+                                if (grille.Cellules[numLigne][numColonne].jetonCourant.Couleur==ListeJoueurs[(numtour+1)%2].Couleur) {
+                                    grille.Cellules[numLigne][numColonne].supprimerJeton();
+                                    test="ok";
+                                }
+                                else {
+                                    System.out.println("Ne désintégrer pas votre propre jeton !!!");
                                 }
                             }
                             else {
