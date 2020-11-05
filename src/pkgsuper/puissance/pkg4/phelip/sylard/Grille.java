@@ -69,7 +69,11 @@ public class Grille {
                     }
                     else {//s'il n'y a pas de trou noir
                         if (Cellules[i][j].presenceDesintegrateur()==true) {//s'il y a un désintégrateur
-                            System.out.print("/");//affiche un espace
+                            System.out.print("/");//affiche un désintégrateur
+                            System.out.print("|");//affiche un autre trait du "tableau"
+                        }
+                        else {
+                            System.out.print(" ");//affiche un espace
                             System.out.print("|");//affiche un autre trait du "tableau"
                         }
                     }
