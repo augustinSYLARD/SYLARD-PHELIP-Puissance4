@@ -35,6 +35,8 @@ public class Partie {
             ListeJoueurs[0].affecterCouleur("jaune");//le premier joueur sera jaune
             ListeJoueurs[1].affecterCouleur("rouge");//le deuxieme sera rouge
         }
+        System.out.println(ListeJoueurs[0].Nom+" est de couleur "+ListeJoueurs[0].Couleur);
+        System.out.println(ListeJoueurs[1].Nom+" est de couleur "+ListeJoueurs[1].Couleur);
     }//on utilise pour cela les fonction affecterCouleur() qui modifie l'attribut Couleur des joueurs
     
     public void initialiserPartie() {//cette fonction va permettre de réaliser les préparatif avant une partie
@@ -119,7 +121,7 @@ public class Partie {
             while (test!="ok") {//tant que le test n'est pas "ok" on demande a l'utilisateur de séléctionner une colonne
                 System.out.println(" 1 2 3 4 5 6 7");//on affiche les numéros des colonnes
                 grille.afficherGrilleSurConsole();//on affiche la grille
-                System.out.println("Au tour de "+joueurCourant.Nom);//un indique quel joueur doit jouer
+                System.out.println("Au tour de "+joueurCourant.Nom+" ("+joueurCourant.Couleur+")");//un indique quel joueur doit jouer
                 int numLigne=0;
                 int numColonne=0;
                 int choix=0;
