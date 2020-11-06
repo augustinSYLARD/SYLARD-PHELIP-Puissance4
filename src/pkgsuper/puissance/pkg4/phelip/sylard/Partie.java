@@ -179,27 +179,27 @@ public class Partie {
                         }
                     }
                     else {
-                        if (choix==3) {
-                            if (joueurCourant.nombreDesintegrateurs>0) {
-                                while (numColonne<1||numColonne>7) {
-                                    System.out.println("Entrer la colonne du jeton que vous souhaiter désintégrer");
-                                    numColonne=saisieUtilisateur.nextInt();
+                        if (choix==3) {//si le joueur décide d'utiliser un désintegrateur
+                            if (joueurCourant.nombreDesintegrateurs>0) {//si le joueur possede au moins 1 désintégrateur
+                                while (numColonne<1||numColonne>7) {//si le numéro de la colonne choisie et bien entre 1 et 7, 1 et 7 compris
+                                    System.out.println("Entrer la colonne du jeton que vous souhaiter désintégrer");//on demande a l'utilisateur de rentrer le numéro d'une colonne
+                                    numColonne=saisieUtilisateur.nextInt();//on saisie dans la variable numcolonne le numéro choisie
+                                }//si le numéro est valide, alors on sors de la boucle while
+                                while (numLigne<1||numLigne>6) {//si le numéro de la ligne choisie et bien entre 1 et 6, 1 et 6 compris
+                                    System.out.println("Entrer la ligne du jeton que vous souhaiter désintégrer");//on demande a l'utilisateur de rentrer le numéro d'une ligne
+                                    numLigne=saisieUtilisateur.nextInt();//on saisie dans la variable numligne le numéro choisie
+                                }//si le numéro est valide, alors on sors de la boucle while
+                                if (grille.Cellules[numLigne-1][numColonne-1].jetonCourant.Couleur==ListeJoueurs[(numtour+1)%2].Couleur) {//si le jeton choisie appartient bien au joueur adverse
+                                    grille.Cellules[numLigne-1][numColonne-1].supprimerJeton();//on supprime le jeton
+                                    grille.tasserGrille(numColonne-1);//on tasse la grille
+                                    test="ok";//on previen le programme que le tour est validé
                                 }
-                                while (numLigne<1||numLigne>6) {
-                                    System.out.println("Entrer la ligne du jeton que vous souhaiter désintégrer");
-                                    numLigne=saisieUtilisateur.nextInt();
+                                else {//si le jeton appartient au joueur
+                                    System.out.println("Ne désintégrer pas votre propre jeton !!!");//on le previens qu'il ne peut pas, il doit alors recommencer sont tour car il n'est pas validé
                                 }
-                                if (grille.Cellules[numLigne-1][numColonne-1].jetonCourant.Couleur==ListeJoueurs[(numtour+1)%2].Couleur) {
-                                    grille.Cellules[numLigne-1][numColonne-1].supprimerJeton();
-                                    grille.tasserGrille(numColonne-1);
-                                    test="ok";
-                                }
-                                else {
-                                    System.out.println("Ne désintégrer pas votre propre jeton !!!");
-                                }
-                            }
+                            }//si le joueur n'a pas desintégrateur
                             else {
-                                System.out.println("Vous n'avez pas de désintégrateur");
+                                System.out.println("Vous n'avez pas de désintégrateur");//on le previen qu'il n'en possede pas
                             }
                         }
                     }
