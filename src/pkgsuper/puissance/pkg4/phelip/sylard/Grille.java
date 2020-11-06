@@ -80,11 +80,11 @@ public class Grille {
                 }
                 else {//sinon, (elle n'est pas vide)
                     if (Cellules[i][j].jetonCourant.Couleur=="rouge") {//si elle est rouge
-                        System.out.print("+");//affiche un + si le jeton est rouge
+                        System.out.print("R");//affiche un + si le jeton est rouge
                         System.out.print("|");//affiche un autre trait du "tableau"
                     }
                     else {
-                        System.out.print("-");//affiche un - si le jeton est jaune
+                        System.out.print("J");//affiche un - si le jeton est jaune
                         System.out.print("|");//affiche un autre trait du "tableau"
                     }
                 }
