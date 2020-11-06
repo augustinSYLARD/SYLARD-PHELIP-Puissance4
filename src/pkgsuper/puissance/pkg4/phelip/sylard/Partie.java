@@ -223,9 +223,15 @@ public class Partie {
         grille.afficherGrilleSurConsole();//on affiche une derniere fois la grille
         
         if (grille.etreGagnantePourJoueur(ListeJoueurs[0])==true) {//si le joueur 1 a gagné
-            if (grille.etreGagnantePourJoueur(ListeJoueurs[1])==true) {//Si les deux joueur sont gagant alors c'est donc le dernier joueur a avoir jouer qui perd, mais comme on a augmenter le numéro du tour de 1 ce n'est pas l'autre joueur qui est gagnant mais joueurCourant
-                System.out.println(joueurCourant.Nom+" a Gagné !!!!");//on affiche un message de felicitation avec son nom
-                System.out.println("Bravo à toi!");
+            if (grille.etreGagnantePourJoueur(ListeJoueurs[1])==true) {//Si les deux joueur sont gagant alors c'est donc le dernier joueur a avoir jouer qui perd, car c'est lui qui aura utiliser un désintégrateur et donc aura fait gagner les deux joueurs
+                if (joueurCourant==ListeJoueurs[0]) {
+                    System.out.println(ListeJoueurs[1].Nom+" a Gagné !!!!");//on affiche un message de felicitation avec son nom
+                    System.out.println("Bravo à toi!");
+                }
+                else {
+                    System.out.println(ListeJoueurs[0].Nom+" a Gagné !!!!");//on affiche un message de felicitation avec son nom
+                    System.out.println("Bravo à toi!");
+                }
             }
             else {//Si seul le joueur 1 a gagné
                 System.out.println(ListeJoueurs[0].Nom+" a Gagné !!!!");//on affiche un message de felicitation avec son nom
