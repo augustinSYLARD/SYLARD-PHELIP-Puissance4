@@ -212,11 +212,6 @@ public class Partie {
                 if (grille.etreGagnantePourJoueur(ListeJoueurs[1])==true) {//si le joueur 2 a gagné on donne à finDeLaPartie la valeur true
                     finDeLaPartie=true;
                 }
-                else {//sinon
-                    if (grille.etreRemplie()==true) {//si la grille est pleine on donne à finDeLaPartie la valeur true
-                        finDeLaPartie=true;
-                    }
-                }
             }
         }
         
