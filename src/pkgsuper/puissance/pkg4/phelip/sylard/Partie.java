@@ -130,6 +130,7 @@ public class Partie {
                 System.out.println("2) Récupérer un jeton");
                 System.out.println("3) Utiliser un désintégrateur");
                 System.out.println("Vous posséder "+joueurCourant.nombreDesintegrateurs+" désintegrateurs");
+                System.out.println("Vous posséder "+joueurCourant.nombreJetonsRestants+" désintegrateurs");
                 choix = saisieUtilisateur.nextInt();
                 if (choix==1) {
                     while (numColonne<1||numColonne>7) {
